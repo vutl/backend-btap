@@ -1,7 +1,8 @@
 import express from 'express';
-const additionalInfoRoutes = express.Router();
 import AdditionalInfoController from '../controllers/AdditionalInfoController.js';
 import authenticate from '../middlewares/authMiddleware.js';
+const additionalInfoRoutes = express.Router();
+
 
 // Middleware xác thực token và lấy profile_id từ token
 additionalInfoRoutes.use(authenticate);

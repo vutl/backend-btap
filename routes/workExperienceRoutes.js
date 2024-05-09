@@ -1,7 +1,8 @@
 import express from 'express';
-const workExperienceRoutes = express.Router();
 import WorkExperienceController from '../controllers/WorkExperienceController.js';
 import authenticate from '../middlewares/authMiddleware.js';
+const workExperienceRoutes = express.Router();
+
 
 // Middleware xác thực token và lấy profile_id từ token
 workExperienceRoutes.use(authenticate);

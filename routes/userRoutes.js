@@ -1,6 +1,7 @@
 import express from 'express';
-const userRoutes = express.Router();
 import UserController from '../controllers/UserController.js';
+const userRoutes = express.Router();
+
 
 // Tạo tài khoản người dùng mới
 userRoutes.post('/create', UserController.createUser);

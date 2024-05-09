@@ -6,7 +6,7 @@ import workExperienceRoutes from './routes/workExperienceRoutes.js';
 import additionalInfoRoutes from './routes/additionalInfoRoutes.js';
 
 // Kết nối MongoDB Atlas
-mongoose.connect('mongodb+srv://btap:hehehehe@btap.wqdsi5z.mongodb.net/', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://btap:hehehehe@btap.wqdsi5z.mongodb.net/?retryWrites=true&w=majority&appName=btap')
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.error('Could not connect to MongoDB:', err));
 
