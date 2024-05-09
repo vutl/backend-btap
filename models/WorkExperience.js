@@ -9,8 +9,8 @@ const projectSchema = new mongoose.Schema({
 });
 
 const workExperienceSchema = new mongoose.Schema({
-    start_date: { type: Date, required: true },
-    end_date: { type: Date },
+    start_date: { type: String, required: true },
+    end_date: { type: String },
     company_name: { type: String, required: true },
     role: { type: String, required: true },
     skills: [{ type: String }],
