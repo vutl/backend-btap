@@ -11,6 +11,6 @@ profileRoutes.use(authenticate);
 profileRoutes.get('/', ProfileController.getProfile);
 
 // Cập nhật thông tin profile của người dùng
-profileRoutes.put('/', ProfileController.updateProfile);
+profileRoutes.put('/update', ProfileController.updateProfile);
 
 export default profileRoutes;

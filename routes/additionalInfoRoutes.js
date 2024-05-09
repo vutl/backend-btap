@@ -8,7 +8,7 @@ const additionalInfoRoutes = express.Router();
 additionalInfoRoutes.use(authenticate);
 
 // Tạo mới thông tin bổ sung
-additionalInfoRoutes.post('/', AdditionalInfoController.createAdditionalInfo);
+additionalInfoRoutes.post('/create', AdditionalInfoController.createAdditionalInfo);
 
 // Lấy thông tin bổ sung của người dùng
 additionalInfoRoutes.get('/', AdditionalInfoController.getAdditionalInfo);

@@ -8,7 +8,7 @@ const workExperienceRoutes = express.Router();
 workExperienceRoutes.use(authenticate);
 
 // Tạo mới kinh nghiệm làm việc
-workExperienceRoutes.post('/', WorkExperienceController.createWorkExperience);
+workExperienceRoutes.post('/create', WorkExperienceController.createWorkExperience);
 
 // Lấy thông tin kinh nghiệm làm việc của người dùng
 workExperienceRoutes.get('/', WorkExperienceController.getWorkExperience);
