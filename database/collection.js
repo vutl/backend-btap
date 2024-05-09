@@ -1,6 +1,7 @@
 const Collections = {
-    PROFILE: 'Profile',
-    WORK_EXPERIENCE: 'WorkExperience',
-    ADDITIONAL_INFO: 'AdditionalInfo',
+    USER: 'user',
+    PROFILE: 'profile',
+    WORK_EXPERIENCE: 'workExperience',
+    ADDITIONAL_INFO: 'additionalInfo',
 }
 export default Collections;

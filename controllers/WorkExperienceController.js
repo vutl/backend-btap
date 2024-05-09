@@ -7,10 +7,10 @@ const WorkExperienceController = {
             const profile_id = req.username; // Giả sử profile_id được lấy từ token
             const workExperienceData = { ...req.body, profile_id };
             const workExperience = await WorkModel.create(workExperienceData);
-            res.status(201).json(workExperience);
+            res.status(201).send(workExperience);
         } catch (err) {
             console.error(err);
-            res.status(500).json({ message: 'Internal server error' });
+            res.status(500).send({ message: 'Internal server error' });
         }
     },
 
@@ -20,7 +20,7 @@ const WorkExperienceController = {
             res.json(workExperiences);
         } catch (err) {
             console.error(err);
-            res.status(500).json({ message: 'Internal server error' });
+            res.status(500).send({ message: 'Internal server error' });
         }
     },
 
@@ -33,12 +33,12 @@ const WorkExperienceController = {
                 { new: true }
             );
             if (!workExperience) {
-                return res.status(404).json({ message: 'Work experience not found' });
+                return res.status(404).send({ message: 'Work experience not found' });
             }
             res.json(workExperience);
         } catch (err) {
             console.error(err);
-            res.status(500).json({ message: 'Internal server error' });
+            res.status(500).send({ message: 'Internal server error' });
         }
     },
 }

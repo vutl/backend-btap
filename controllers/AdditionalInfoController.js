@@ -7,10 +7,10 @@ const AdditionalInfoController = {
             const profile_id = req.username; // Giả sử profile_id được lấy từ token
             const additionalInfoData = { ...req.body, profile_id };
             const additionalInfo = await AdditionalInfoModel.create(additionalInfoData);
-            res.status(201).json(additionalInfo);
+            res.status(201).send(additionalInfo);
         } catch (err) {
             console.error(err);
-            res.status(500).json({ message: 'Internal server error' });
+            res.status(500).send({ message: 'Internal server error' });
         }
     },
 
@@ -18,12 +18,12 @@ const AdditionalInfoController = {
         try {
             const additionalInfo = await AdditionalInfoModel.findOne({ profile_id: req.username });
             if (!additionalInfo) {
-                return res.status(404).json({ message: 'Additional info not found' });
+                return res.status(404).send({ message: 'Additional info not found' });
             }
             res.json(additionalInfo);
         } catch (err) {
             console.error(err);
-            res.status(500).json({ message: 'Internal server error' });
+            res.status(500).send({ message: 'Internal server error' });
         }
     },
 
@@ -36,12 +36,12 @@ const AdditionalInfoController = {
                 { new: true }
             );
             if (!additionalInfo) {
-                return res.status(404).json({ message: 'Additional info not found' });
+                return res.status(404).send({ message: 'Additional info not found' });
             }
             res.json(additionalInfo);
         } catch (err) {
             console.error(err);
-            res.status(500).json({ message: 'Internal server error' });
+            res.status(500).send({ message: 'Internal server error' });
         }
     },
 }
