@@ -6,8 +6,7 @@ const SECRET_KEY = 'your_secret_key_uwu';
 const ProfileController = {
     authenticate: async (req, res, next) => {
         try {
-            const authHeader = req.headers['authorization'];
-            const token = authHeader.split(' ')[1];
+            const token = req.headers['authorization'];
             if (!token) {
                 return res.status(401).send({ message: 'No token provided' });
             }

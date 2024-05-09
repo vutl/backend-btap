@@ -9,6 +9,7 @@ const projectSchema = new mongoose.Schema({
 });
 
 const workExperienceSchema = new mongoose.Schema({
+    profile_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Profile' },
     start_date: { type: String, required: true },
     end_date: { type: String },
     company_name: { type: String, required: true },

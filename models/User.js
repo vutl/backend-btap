@@ -2,7 +2,6 @@ import mongoose from 'mongoose';
 import Collections from '../database/collection.js' 
 
 const userSchema = new mongoose.Schema({
-    id: { type: String, required: true, unique: true },
     username: { type: String, required: true, unique: true },
     passwordHash: { type: String, required: true }
 });
