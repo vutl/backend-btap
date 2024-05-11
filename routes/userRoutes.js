@@ -24,7 +24,7 @@ userRoutes.get('/login', (req, res) => {
 userRoutes.post('/login', UserController.loginUser);
 
 // Lấy thông tin người dùng đã đăng nhập
-userRoutes.get('/api/profile', UserController.getUserProfile);
+userRoutes.get('/api/profile/', UserController.getUserProfile);
 
 userRoutes.get('/profile', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'profile.html'));

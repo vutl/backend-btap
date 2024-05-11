@@ -93,6 +93,7 @@ const UserController = {
                         description: user.work.projects.description || "",
                         start_date: user.work.projects.start_date || "",
                         end_date: user.work.projects.project_name || "",
+                        _id: user.work.projects._id,
                     }]
                 },
                 hobbies: user.hobbies || [''],
