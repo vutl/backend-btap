@@ -56,7 +56,7 @@ const UserController = {
             if (!user || !(bcrypt.compare(password, user.passwordHash))) {
                 return res.status(401).send({ message: 'Invalid username or password' });
             }
-            // Trả về thông tin người dùng
+
             res.redirect('/profile');
         } catch (err) {
             console.error(err);
@@ -68,7 +68,7 @@ const UserController = {
         try {
             // Tìm người dùng trong cơ sở dữ liệu
             const {username} = req.body;
-            const user = await UserModel.findById(username);
+            const user = await UserModel.findOne(username);
             if (!user.username) {
                 return res.status(404).json({ message: 'User not found' });
             }

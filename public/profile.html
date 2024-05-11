@@ -7,50 +7,106 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container">
+    <!-- <div class="container">
         <h2 class="mb-4">Profile</h2>
         <div id="userProfile"></div>
         <a href="/logout" class="btn btn-danger">Logout</a>
+    </div> -->
+    <div class="container">
+        <h2>User Profile</h2>
+        <table class="table">
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>Username</td>
+                <td id="username"></td>
+            </tr>
+            <tr>
+                <td>Full Name</td>
+                <td id="full_name"></td>
+            </tr>
+            <tr>
+                <td>Date of Birth</td>
+                <td id="date_of_birth"></td>
+            </tr>
+            <tr>
+                <td>Place of Birth</td>
+                <td id="place_of_birth"></td>
+            </tr>
+            <tr>
+                <td>Nationality</td>
+                <td id="nationality"></td>
+            </tr>
+            <tr>
+                <td>Education History</td>
+                <td id="education_history"></td>
+            </tr>
+            <tr>
+                <td>Company Name</td>
+                <td id="company_name"></td>
+            </tr>
+            <tr>
+                <td>Start Date (Work)</td>
+                <td id="start_date"></td>
+            </tr>
+            <tr>
+                <td>End Date (Work)</td>
+                <td id="end_date"></td>
+            </tr>
+            <tr>
+                <td>Role (Work)</td>
+                <td id="role"></td>
+            </tr>
+            <tr>
+                <td>Skills (Work)</td>
+                <td id="skills"></td>
+            </tr>
+            <tr>
+                <td>Projects (Work)</td>
+                <td id="projects"></td>
+            </tr>
+            <tr>
+                <td>Hobbies</td>
+                <td id="hobbies"></td>
+            </tr>
+            <tr>
+                <td>Personal Goals</td>
+                <td id="personal_goals"></td>
+            </tr>
+        </table>
     </div>
-
+            
+        </table>
+    </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Hàm để lấy thông tin người dùng đã đăng nhập
-            function fetchUserProfile() {
-                fetch('/api/profile')
-                .then(response => response.json())
-                .then(user => {
-                    const userProfile = document.getElementById('userProfile');
-                    const userInfo = `
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title">Username: ${user.username}</h5>
-                                <p class="card-text">Fullname: ${user.full_name || ''}</p>
-                                <p class="card-text">Date of Birth: ${user.date_of_birth || ''}</p>
-                                <p class="card-text">Place of Birth: ${user.place_of_birth || ''}</p>
-                                <p class="card-text">Nationality: ${user.nationality || ''}</p>
-                                <h6 class="card-subtitle mb-2 text-muted">Education:</h6>
-                                <p class="card-text">Qualifications: ${user.education_history || ''}</p>
-                                <h6 class="card-subtitle mb-2 text-muted">Work Experience:</h6>
-                                <p class="card-text">Skills: ${user.work.company_name?.join(', ') || ''}</p>
-                                <p class="card-text">Skills: ${user.work.start_date?.join(', ') || ''}</p>
-                                <p class="card-text">Skills: ${user.work.end_date?.join(', ') || ''}</p>
-                                <p class="card-text">Skills: ${user.work.role?.join(', ') || ''}</p>
-                                <p class="card-text">Skills: ${user.work.skills?.join(', ') || ''}</p>
-                                <p class="card-text">Projects: ${user.work.projects?.map(project => project.name).join(', ') || ''}</p>
-                                <h6 class="card-subtitle mb-2 text-muted">Additional Information:</h6>
-                                <p class="card-text">Interests: ${user.hobbies?.join(', ') || ''}</p>
-                                <p class="card-text">Personal Goals: ${user.personal_goals || ''}</p>
-                            </div>
-                        </div>
-                    `;
-                    userProfile.innerHTML = userInfo;
-                })
-                .catch(error => console.error('Error fetching user profile:', error));
-            }
-    
-            // Gọi hàm để lấy thông tin người dùng đã đăng nhập sau khi trang được tải
-            window.onload = fetchUserProfile();
+            // Gửi yêu cầu GET đến endpoint 'api/profile' để lấy thông tin người dùng
+            fetch('/api/profile')
+            .then(response => response.json())
+            .then(data => {
+                // Hiển thị thông tin người dùng trên trang profile
+                document.getElementById('username').textContent = data.username;
+                document.getElementById('full_name').textContent = data.full_name || 'N/A';
+                document.getElementById('date_of_birth').textContent = data.date_of_birth || 'N/A';
+                document.getElementById('place_of_birth').textContent = data.place_of_birth || 'N/A';
+                document.getElementById('nationality').textContent = data.nationality || 'N/A';
+                document.getElementById('education_history').textContent = data.education_history || 'N/A';
+                document.getElementById('company_name').textContent = data.work.company_name || 'N/A';
+                document.getElementById('start_date').textContent = data.work.start_date || 'N/A';
+                document.getElementById('end_date').textContent = data.work.end_date || 'N/A';
+                document.getElementById('role').textContent = data.work.role || 'N/A';
+                document.getElementById('skills').textContent = data.work.skills.join(', ') || 'N/A';
+                document.getElementById('projects').textContent = data.work.projects.map(project => {
+                    return `Name: ${project.project_name}, Description: ${project.description}, Start Date: ${project.start_date}, End Date: ${project.end_date}`;
+                }).join('<br>') || 'N/A';
+                document.getElementById('hobbies').textContent = data.hobbies.join(', ') || 'N/A';
+                document.getElementById('personal_goals').textContent = data.personal_goals || 'N/A';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         });
     </script>
 </body>
